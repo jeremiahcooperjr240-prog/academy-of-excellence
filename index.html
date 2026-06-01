@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academy of Excellence | Home</title>
+    <style>
+        :root {
+            --primary: #1a252f;
+            --accent: #2c3e50;
+            --light: #f4f7f6;
+            --text: #333;
+        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text); background: var(--light); }
+        
+        /* Navigation Bar */
+        nav { background: var(--primary); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        nav .logo { color: white; font-size: 1.4rem; font-weight: bold; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav ul li a { color: #fff; text-decoration: none; font-size: 1rem; transition: color 0.3s; }
+        nav ul li a:hover { color: #3498db; }
+
+        /* Hero Banner */
+        .hero { background: linear-gradient(rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.8)), url('school-banner.jpg') center/cover; color: white; padding: 80px 20px; text-align: center; }
+        .hero h1 { margin: 0; font-size: 2.8rem; }
+        .hero p { font-size: 1.2rem; margin-top: 10px; }
+
+        .container { padding: 40px 20px; max-width: 900px; margin: 0 auto; text-align: center; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        
+        footer { background: var(--primary); color: white; text-align: center; padding: 15px; position: relative; bottom: 0; width: 100%; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Academy of Excellence</div>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/academics">Academics</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to the Academy of Excellence</h1>
+        <p>Nurturing Leadership, Character, and Academic Distinction</p>
+    </div>
+
+    <div class="container">
+        <h2>Our Pillars of Success</h2>
+        <div class="features">
+            <div class="card">
+                <h3>Primary Education</h3>
+                <p>A comprehensive national curriculum designed to inspire young minds and build foundational core learning skills.</p>
+            </div>
+            <div class="card">
+                <h3>Holistic Growth</h3>
+                <p>Focusing on moral character, creative arts, and practical knowledge alongside standard coursework.</p>
+            </div>
+            <div class="card">
+                <h3>Skilled Instructors</h3>
+                <p>Dedicated educators committed to guiding every student toward their full potential.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Academy of Excellence. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
