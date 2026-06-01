@@ -8,40 +8,56 @@
         :root {
             --primary: #1a252f;
             --accent: #2c3e50;
+            --gold: #f39c12;
             --light: #f4f7f6;
             --text: #333;
         }
         body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text); background: var(--light); }
         
-        /* Navigation Bar */
-        nav { background: var(--primary); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        nav .logo { color: white; font-size: 1.4rem; font-weight: bold; }
+        /* Navigation Bar with Logo */
+        nav { background: var(--primary); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--gold); }
+        .logo-container { display: flex; align-items: center; gap: 12px; }
+        .logo-img { width: 45px; height: 45px; object-fit: cover; border-radius: 50%; background: #fff; }
+        .logo-text { color: white; font-size: 1.4rem; font-weight: bold; letter-spacing: 0.5px; }
+        
         nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
         nav ul li { margin-left: 20px; }
-        nav ul li a { color: #fff; text-decoration: none; font-size: 1rem; transition: color 0.3s; }
-        nav ul li a:hover { color: #3498db; }
+        nav ul li a { color: #fff; text-decoration: none; font-size: 1rem; font-weight: 500; transition: color 0.3s; }
+        nav ul li a:hover { color: var(--gold); }
 
-        /* Hero Banner */
-        .hero { background: linear-gradient(rgba(26, 37, 47, 0.8), rgba(26, 37, 47, 0.8)), url('school-banner.jpg') center/cover; color: white; padding: 80px 20px; text-align: center; }
-        .hero h1 { margin: 0; font-size: 2.8rem; }
-        .hero p { font-size: 1.2rem; margin-top: 10px; }
+        /* Hero Banner with School Building Image Background */
+        .hero { 
+            background: linear-gradient(rgba(26, 37, 47, 0.85), rgba(26, 37, 47, 0.85)), url('images/building.jpg'), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200'); 
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            padding: 120px 20px; 
+            text-align: center; 
+        }
+        .hero h1 { margin: 0; font-size: 3.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.3rem; margin-top: 15px; color: #e0e0e0; }
 
-        .container { padding: 40px 20px; max-width: 900px; margin: 0 auto; text-align: center; }
-        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .container { padding: 50px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary); }
         
-        footer { background: var(--primary); color: white; text-align: center; padding: 15px; position: relative; bottom: 0; width: 100%; box-sizing: border-box; }
+        footer { background: var(--primary); color: white; text-align: center; padding: 20px; width: 100%; box-sizing: border-box; }
     </style>
 </head>
 <body>
 
     <nav>
-        <div class="logo">Academy of Excellence</div>
+        <div class="logo-container">
+            <!-- Dynamically falls back to text styling if image is missing -->
+            <img src="images/logo.png" alt="🎓" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">Academy of Excellence</div>
+        </div>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/academics">Academics</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/admin" style="color: var(--gold);">Admin Portal</a></li>
         </ul>
     </nav>
 
