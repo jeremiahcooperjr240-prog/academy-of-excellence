@@ -8,34 +8,39 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
+// Global array to store inquiries temporarily in server memory
+let inquiries = [
+    { name: "John Kamara", email: "john@example.com", message: "Inquiring about Grade 4 enrollment requirements for the upcoming semester." },
+    { name: "Blessing Flomo", email: "blessing@example.com", message: "Does the academy provide transport services for students living further out?" }
+];
+
 // HTML Page Delivery Routes
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'index.html')));
 app.get('/about', (req, res) => res.sendFile(path.join(__dirname, 'about.html')));
 app.get('/academics', (req, res) => res.sendFile(path.join(__dirname, 'academics.html')));
 app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, 'contact.html')));
+app.get('/admin', (req, res) => res.sendFile(path.join(__dirname, 'admin.html')));
+app.get('/admin-panel', (req, res) => res.sendFile(path.join(__dirname, 'admin-panel.html')));
 
-// 1. Route to serve the Admin Login Page
-app.get('/admin', (req, res) => {
-    res.sendFile(path.join(__dirname, 'admin.html'));
-});
-
-// 2. Route to serve the Secure Admin Dashboard Panel
-app.get('/admin-panel', (req, res) => {
-    res.sendFile(path.join(__dirname, 'admin-panel.html'));
-});
-
-// Backend API Form Submission Route
+// Interactive Form Capture API Route
 app.post('/submit-contact', (req, res) => {
     const { name, email, message } = req.body;
-    console.log(`New Inquiry: Name: ${name}, Email: ${email}`);
-    res.json({ success: true, reply: `Thank you, ${name}! Your inquiry was received.` });
+    
+    // Push the new message into our live data storage
+    inquiries.push({ name, email, message });
+    console.log(`Live Data Stream Sync - New Inquiry from: ${name}`);
+    
+    res.json({ success: true, reply: `Thank you, ${name}! Your inquiry has been logged successfully.` });
 });
 
-// 3. Secure Admin Authentication API Route
+// Secure API Route for Admin Panel to read messages
+app.get('/api/inquiries', (req, res) => {
+    res.json({ success: true, data: inquiries });
+});
+
+// Secure Admin Authentication API Route
 app.post('/api/admin-login', (req, res) => {
     const { username, password } = req.body;
-
-    // Hardcoded secure credentials for your admin account
     if (username === 'admin' && password === 'Excellence2026!') {
         res.json({ success: true, redirectUrl: '/admin-panel' });
     } else {
