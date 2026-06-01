@@ -2,58 +2,155 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Contact Us | Academy of Excellence</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Admissions | Academy of Excellence</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; }
-        nav { background: #1a252f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        nav .logo { color: white; font-size: 1.4rem; font-weight: bold; }
-        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
-        nav ul li { margin-left: 20px; }
-        nav ul li a { color: #fff; text-decoration: none; }
-        .container { padding: 40px 20px; max-width: 500px; margin: 0 auto; background: white; margin-top: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        input, textarea, button { width: 100%; padding: 12px; margin: 10px 0; border-radius: 4px; border: 1px solid #ccc; box-sizing: border-box; }
-        button { background: #2c3e50; color: white; border: none; cursor: pointer; font-size: 1rem; }
-        button:hover { background: #34495e; }
+        :root {
+            --primary-dark: #0f172a;
+            --primary-accent: #1e293b;
+            --brand-gold: #d97706;
+            --brand-gold-hover: #b45309;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --border: #e2e8f0;
+        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text-dark); background-color: var(--bg-light); line-height: 1.6; }
+        
+        /* Navigation Bar */
+        nav { background-color: var(--primary-dark); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--brand-gold); position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 14px; }
+        .logo-badge { background: var(--brand-gold); color: var(--white); width: 40px; height: 40px; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-size: 1.3rem; font-weight: bold; }
+        .logo-text { color: var(--white); font-size: 1.4rem; font-weight: 700; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 25px; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-size: 1rem; font-weight: 500; transition: 0.3s; padding: 8px 12px; }
+        nav ul li a:hover { color: var(--white); }
+        nav ul li a.admin-btn { color: var(--brand-gold); border: 1px solid var(--brand-gold); border-radius: 4px; }
+        nav ul li a.admin-btn:hover { background-color: var(--brand-gold); color: var(--white); }
+
+        /* Header Banner */
+        .page-header { background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/building.jpg'), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200'); background-size: cover; background-position: center; color: var(--white); padding: 80px 20px; text-align: center; }
+        .page-header h1 { margin: 0; font-size: 2.8rem; font-weight: 800; }
+
+        /* Multi-Column Grid Layout */
+        .container { padding: 60px 20px; max-width: 1100px; margin: 0 auto; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 20px; }
+        
+        /* Campus Information Info Column */
+        .info-panel { background-color: var(--primary-accent); color: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .info-panel h2 { margin-top: 0; color: var(--brand-gold); font-size: 1.8rem; border-bottom: 2px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .info-item { margin-bottom: 25px; }
+        .info-item h4 { margin: 0 0 5px 0; font-size: 1.1rem; color: #cbd5e1; }
+        .info-item p { margin: 0; color: #f1f5f9; font-size: 1.05rem; }
+
+        /* Polished Interaction Input Form Box */
+        .form-panel { background-color: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--brand-gold); }
+        .form-panel h2 { margin-top: 0; color: var(--primary-dark); font-size: 1.8rem; }
+        
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--primary-accent); font-size: 0.95rem; }
+        input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 6px; box-sizing: border-box; font-size: 1rem; background-color: #f8fafc; transition: all 0.3s; }
+        input:focus, textarea:focus { outline: none; border-color: var(--brand-gold); background-color: var(--white); box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15); }
+        
+        button { background-color: var(--brand-gold); color: var(--white); padding: 14px; border: none; border-radius: 6px; width: 100%; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { background-color: var(--brand-gold-hover); transform: translateY(-1px); }
+        
+        #response-msg { margin-top: 20px; padding: 12px; border-radius: 6px; display: none; font-weight: 600; text-align: center; }
+        .success-box { background-color: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; display: block !important; }
+
+        footer { background-color: var(--primary-dark); color: #94a3b8; text-align: center; padding: 30px 20px; margin-top: 60px; }
     </style>
 </head>
 <body>
+
     <nav>
-        <div class="logo">Academy of Excellence</div>
+        <div class="logo-container">
+            <div class="logo-badge">AE</div>
+            <div class="logo-text">Academy of Excellence</div>
+        </div>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/academics">Academics</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/admin" class="admin-btn">Admin Portal</a></li>
         </ul>
     </nav>
-    <div class="container">
-        <h2>Admissions & Inquiries</h2>
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" rows="4" placeholder="How can we serve you?" required></textarea>
-            <button type="submit">Submit Message</button>
-            <p id="response-msg" style="text-align:center; font-weight:bold; color:green;"></p>
-        </form>
+
+    <div class="page-header">
+        <h1>Connect With Our Admissions Office</h1>
     </div>
+
+    <div class="container">
+        <div class="contact-grid">
+            
+            <!-- Campus Metadata Details -->
+            <div class="info-panel">
+                <h2>Campus Details</h2>
+                <div class="info-item">
+                    <h4>Main Campus Location</h4>
+                    <p>Academy of Excellence Robert field Hughway, Lower Margibi</p>
+                    <p>Mnrovia, Liberia</p>
+                </div>
+                <div class="info-item">
+                    <h4>Administrative Hours</h4>
+                    <p>Monday - Friday: 8:00 AM – 4:00 PM</p>
+                    <p>Saturday: 9:00 AM – 12:00 PM</p>
+                </div>
+                <div class="info-item">
+                    <h4>Direct Digital Contacts</h4>
+                    <p>Email: admissions@excellence.edu</p>
+                    <p>Phone: +231 770103086</p>
+                </div>
+            </div>
+
+            <!-- Client Feedback Live Delivery Form Box -->
+            <div class="form-panel">
+                <h2>Send an Official Inquiry</h2>
+                <form id="contactForm">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="johndoe@example.com" required>
+
+                    <label for="message">Your Detailed Message</label>
+                    <textarea id="message" rows="5" placeholder="How can our admissions team help you?" required></textarea>
+
+                    <button type="submit">Submit Official Inquiry</button>
+                    <div id="response-msg"></div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Academy of Excellence. All Rights Reserved.</p>
+    </footer>
 
     <script>
         document.getElementById('contactForm').addEventListener('submit', async (e) => {
             e.preventDefault();
+            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            const responseMsg = document.getElementById('response-msg');
-            
-            responseMsg.innerText = "Sending...";
-            const res = await fetch('/submit-contact', {
+            const resMsg = document.getElementById('response-msg');
+
+            // Send live capture data packet directly into our backend route loop
+            const response = await fetch('/submit-contact', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, message })
             });
-            const data = await res.json();
-            if (data.success) {
-                responseMsg.innerText = data.reply;
+
+            const data = await response.json();
+            
+            if(data.success) {
+                resMsg.className = "success-box";
+                resMsg.innerText = data.reply;
+                // Reset user text field forms smoothly
                 document.getElementById('contactForm').reset();
             }
         });

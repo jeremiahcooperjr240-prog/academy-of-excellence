@@ -2,36 +2,84 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Academy of Excellence</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #f4f7f6; }
-        nav { background: #1a252f; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
-        nav .logo { color: white; font-size: 1.4rem; font-weight: bold; }
-        nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
-        nav ul li { margin-left: 20px; }
-        nav ul li a { color: #fff; text-decoration: none; }
-        .container { padding: 40px 20px; max-width: 800px; margin: 0 auto; background: white; margin-top: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        :root {
+            --primary-dark: #0f172a;
+            --primary-accent: #1e293b;
+            --brand-gold: #d97706;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+        }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; padding: 0; color: var(--text-dark); background-color: var(--bg-light); line-height: 1.6; }
+        
+        /* Navigation Bar */
+        nav { background-color: var(--primary-dark); padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; border-bottom: 4px solid var(--brand-gold); position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 14px; }
+        .logo-badge { background: var(--brand-gold); color: var(--white); width: 40px; height: 40px; border-radius: 8px; display: flex; justify-content: center; align-items: center; font-size: 1.3rem; font-weight: bold; }
+        .logo-text { color: var(--white); font-size: 1.4rem; font-weight: 700; }
+        nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 25px; }
+        nav ul li a { color: #cbd5e1; text-decoration: none; font-size: 1rem; font-weight: 500; transition: 0.3s; padding: 8px 12px; }
+        nav ul li a:hover { color: var(--white); }
+        nav ul li a.admin-btn { color: var(--brand-gold); border: 1px solid var(--brand-gold); border-radius: 4px; }
+        nav ul li a.admin-btn:hover { background-color: var(--brand-gold); color: var(--white); }
+
+        /* Header Banner */
+        .page-header { background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('images/building.jpg'), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1200'); background-size: cover; background-position: center; color: var(--white); padding: 80px 20px; text-align: center; }
+        .page-header h1 { margin: 0; font-size: 2.8rem; font-weight: 800; }
+
+        /* Main Grid Content */
+        .container { padding: 60px 20px; max-width: 1000px; margin: 0 auto; }
+        .about-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 40px; }
+        .about-card { background: var(--white); padding: 35px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid var(--brand-gold); }
+        .about-card h3 { margin-top: 0; color: var(--primary-dark); font-size: 1.4rem; }
+        
+        p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; }
+        footer { background-color: var(--primary-dark); color: #94a3b8; text-align: center; padding: 30px 20px; margin-top: 60px; }
     </style>
 </head>
 <body>
+
     <nav>
-        <div class="logo">Academy of Excellence</div>
+        <div class="logo-container">
+            <div class="logo-badge">AE</div>
+            <div class="logo-text">Academy of Excellence</div>
+        </div>
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About Us</a></li>
             <li><a href="/academics">Academics</a></li>
             <li><a href="/contact">Contact</a></li>
+            <li><a href="/admin" class="admin-btn">Admin Portal</a></li>
         </ul>
     </nav>
-    <div class="container">
-        <h2>Our Story & Mission</h2>
-        <p>Founded on the principles of integrity and dedication, the Academy of Excellence serves the community by offering deep, meaningful education. Our core framework provides students with a solid foundation to become innovative leaders of tomorrow.</p>
-        <h3>Our Core Values</h3>
-        <ul>
-            <li>Academic Integrity</li>
-            <li>Community Service & Respect</li>
-            <li>Creative Exploration</li>
-        </ul>
+
+    <div class="page-header">
+        <h1>Our History & Mission</h1>
     </div>
+
+    <div class="container">
+        <h2>Who We Are</h2>
+        <p>The Academy of Excellence is premier primary educational institution dedicated to cultivating scholarly discipline and high moral standards. Our tailored teaching techniques focus on unlocking the unique potential inside every individual student, ensuring they are fully equipped to meet both domestic and international benchmarks with absolute confidence.</p>
+
+        <div class="about-grid">
+            <div class="about-card">
+                <h3>Our Core Mission</h3>
+                <p>To provide structured, premium instructional learning paths that spark intellectual curiosity, refine critical reasoning skills, and establish strong character baselines within a safe, collaborative environment.</p>
+            </div>
+            <div class="about-card">
+                <h3>Our Vision</h3>
+                <p>To become a recognized regional pillar of foundational academic distinction, celebrated for graduating brilliant, ethical innovators who lead with compassion, clarity, and competence.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Academy of Excellence. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
